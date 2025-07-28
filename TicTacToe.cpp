@@ -15,8 +15,12 @@ int main() {
     int r = -1, c = -1;
     int rounds = 0;
     bool isWinner;
-    // SCORE TRACKING FEATURE
-    
+
+    char keyLetter;
+
+    int xScore = 0;
+    int oScore = 0;
+
     for(int i = 0; i < 9; i++) {
 
         cout << "Player's " << currentPlayer << " turn:\n";
@@ -26,6 +30,13 @@ int main() {
             board(space);
             cout << "Enter a row and column: ";
             cin >> r >> c;
+            keyLetter = getchar();
+
+            if(keyLetter == 'q' || keyLetter == 'Q') {
+                cout << "The game has successfully exited.\n";
+                exit(0);
+            }
+
             if (r > 3 || r < 1 || c > 3 || c < 1)
                 cout << "Invalid input! Try again.\n";
             else if (space[r-1][c-1] != ' ')
